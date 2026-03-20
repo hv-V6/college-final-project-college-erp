@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>College ERP</title>
+    <link rel="stylesheet" th:href="@{/plugins/fontawesome-free/css/all.min.css}">
+    <link rel="stylesheet" th:href="@{/css/adminlte.min.css}">
+</head>
+<body>
+
+<div th:fragment="sidebar">
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <a href="/dashboard" class="brand-link text-center">
+            <span class="brand-text font-weight-bold">College ERP</span>
+        </a>
+        <div class="sidebar">
+            <nav class="mt-2">
+                <ul class="nav nav-pills nav-sidebar flex-column"
+                    data-widget="treeview" role="menu">
+                    <li class="nav-item">
+                        <a th:href="@{/dashboard}" class="nav-link"
+                           th:classappend="${activePage == 'dashboard'} ? 'active'">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>Dashboard</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a th:href="@{/students}" class="nav-link"
+                           th:classappend="${activePage == 'students'} ? 'active'">
+                            <i class="nav-icon fas fa-user-graduate"></i>
+                            <p>Students</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a th:href="@{/faculty}" class="nav-link"
+                           th:classappend="${activePage == 'faculty'} ? 'active'">
+                            <i class="nav-icon fas fa-chalkboard-teacher"></i>
+                            <p>Faculty</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a th:href="@{/attendance}" class="nav-link"
+                           th:classappend="${activePage == 'attendance'} ? 'active'">
+                            <i class="nav-icon fas fa-check-square"></i>
+                            <p>Attendance</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a th:href="@{/exams}" class="nav-link"
+                           th:classappend="${activePage == 'exams'} ? 'active'">
+                            <i class="nav-icon fas fa-file-alt"></i>
+                            <p>Exams &amp; Results</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a th:href="@{/fees}" class="nav-link"
+                           th:classappend="${activePage == 'fees'} ? 'active'">
+                            <i class="nav-icon fas fa-rupee-sign"></i>
+                            <p>Fee Management</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a th:href="@{/timetable}" class="nav-link"
+                           th:classappend="${activePage == 'timetable'} ? 'active'">
+                            <i class="nav-icon fas fa-calendar-alt"></i>
+                            <p>Timetable</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a th:href="@{/library}" class="nav-link"
+                           th:classappend="${activePage == 'library'} ? 'active'">
+                            <i class="nav-icon fas fa-book"></i>
+                            <p>Library</p>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </aside>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/base :: head}"></head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/logout}"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div th:replace="~{layout/base :: sidebar}" th:with="activePage='timetable'"></div>
+
+    <div class="content-wrapper">
+        <div class="content-header">
+            <div class="container-fluid">
+                <h1 class="m-0">Timetable</h1>
+            </div>
+        </div>
+        <div class="content">
+            <div class="container-fluid">
+                <a th:href="@{/timetable/new}" class="btn btn-primary mb-3">
+                    <i class="fas fa-plus"></i> Add Entry
+                </a>
+                <div class="card">
+                    <div class="card-body table-responsive p-0">
+                        <table class="table table-hover text-nowrap">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Department</th>
+                                <th>Day</th>
+                                <th>Subject</th>
+                                <th>Faculty</th>
+                                <th>Start Time</th>
+                                <th>End Time</th>
+                                <th>Room</th>
+                                <th>Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="entry : ${entries}">
+                                <td th:text="${entry.id}"></td>
+                                <td th:text="${entry.department}"></td>
+                                <td th:text="${entry.dayOfWeek}"></td>
+                                <td th:text="${entry.subject}"></td>
+                                <td th:text="${entry.facultyName}"></td>
+                                <td th:text="${entry.startTime}"></td>
+                                <td th:text="${entry.endTime}"></td>
+                                <td th:text="${entry.room}"></td>
+                                <td>
+                                    <a th:href="@{/timetable/edit/{id}(id=${entry.id})}" class="btn btn-sm btn-warning">Edit</a>
+                                    <a th:href="@{/timetable/delete/{id}(id=${entry.id})}"
+                                       class="btn btn-sm btn-danger"
+                                       onclick="return confirm('Delete this entry?')">Delete</a>
+                                </td>
+                            </tr>
+                            <tr th:if="${#lists.isEmpty(entries)}">
+                                <td colspan="9" class="text-center text-muted">No timetable entries found.</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <strong>College ERP</strong> &copy; 2026. All rights reserved.
+    </footer>
+</div>
+<script th:src="@{/plugins/jquery/jquery.min.js}"></script>
+<script th:src="@{/plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/js/adminlte.min.js}"></script>
+</body>
+</html>

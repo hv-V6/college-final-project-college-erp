@@ -1,0 +1,21 @@
+# Secret config — NEVER push this
+.env
+
+# Maven build output
+target/
+*.jar
+*.war
+
+# IntelliJ IDEA files
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/

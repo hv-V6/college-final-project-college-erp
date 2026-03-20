@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/base :: head}"></head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/logout}"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div th:replace="~{layout/base :: sidebar}" th:with="activePage='fees'"></div>
+
+    <div class="content-wrapper">
+        <div class="content-header">
+            <div class="container-fluid">
+                <h1 class="m-0" th:text="${fee.id == null} ? 'Add Fee Record' : 'Edit Fee Record'"></h1>
+            </div>
+        </div>
+        <div class="content">
+            <div class="container-fluid">
+                <div class="card card-primary" style="max-width:600px;">
+                    <div class="card-body">
+                        <form th:action="@{/fees/save}" th:object="${fee}" method="post">
+                            <input type="hidden" th:field="*{id}">
+
+                            <div class="form-group">
+                                <label>Student</label>
+                                <select class="form-control" th:field="*{student.id}" required>
+                                    <option th:each="s : ${students}"
+                                            th:value="${s.id}"
+                                            th:text="${s.firstName + ' ' + s.lastName}"
+                                            th:selected="${fee.student != null and fee.student.id == s.id}">
+                                    </option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Fee Type</label>
+                                <input type="text" class="form-control" th:field="*{feeType}"
+                                       placeholder="e.g. Tuition, Hostel, Library" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Amount (₹)</label>
+                                <input type="number" step="0.01" class="form-control"
+                                       th:field="*{amount}" placeholder="e.g. 25000.00" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Due Date</label>
+                                <input type="date" class="form-control" th:field="*{dueDate}">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Paid Date</label>
+                                <input type="date" class="form-control" th:field="*{paidDate}">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Status</label>
+                                <select class="form-control" th:field="*{status}" required>
+                                    <option value="">-- Select Status --</option>
+                                    <option th:each="s : ${feeStatuses}"
+                                            th:value="${s}"
+                                            th:text="${s}">
+                                    </option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Remarks</label>
+                                <textarea class="form-control" th:field="*{remarks}" rows="2"
+                                          placeholder="Optional notes"></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Save</button>
+                            <a th:href="@{/fees}" class="btn btn-secondary ml-2">Cancel</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <strong>College ERP</strong> &copy; 2026. All rights reserved.
+    </footer>
+</div>
+<script th:src="@{/plugins/jquery/jquery.min.js}"></script>
+<script th:src="@{/plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/js/adminlte.min.js}"></script>
+</body>
+</html>
