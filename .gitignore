@@ -18,4 +18,4 @@ Thumbs.db
 
 # Logs
 *.log
-logs/
+logs/nginx/default.conf
