@@ -79,4 +79,8 @@ SPRING_DATASOURCE_URL: jdbc:mysql://host.docker.internal:3306/college_erp
 | Check container status | `docker compose ps` | 
 | Check your domain routing | `nslookup [yourdomain.com]` |
 | Check if your domain is working with nginx | `curl -I [http/https://localhost or yourdomain.com]` |
+| Check which ports are listening | `ss -tlnp | grep -E '80|443'` |
+| Check SSL certificate exists | `ls /etc/letsencrypt/live/yourdomain.com/` |
+| Get SSL certificate manually | `certbot certonly --standalone -d yourdomain.com` |
+| Reload nginx config | `docker compose exec nginx nginx -s reload` |
 | Shows which ports are open | `ufw status` |
