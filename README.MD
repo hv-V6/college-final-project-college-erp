@@ -10,7 +10,7 @@
 
 ### 1. Clone / upload the project
 ```bash
-git clone https://github.com/hv-V6/college-final-project-college-erp.git'
+git clone https://github.com/hv-V6/college-final-project-college-erp.git
 cd /root/college-final-project-college-erp
 ```
 
