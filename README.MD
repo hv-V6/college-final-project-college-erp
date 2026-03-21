@@ -10,8 +10,8 @@
 
 ### 1. Clone / upload the project
 ```bash
-git clone https://github.com/yourusername/college-erp.git
-cd college-erp
+git clone https://github.com/hv-V6/college-final-project-college-erp.git'
+cd /root/college-final-project-college-erp
 ```
 
 ### 2. Configure your environment
