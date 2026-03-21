@@ -76,4 +76,7 @@ SPRING_DATASOURCE_URL: jdbc:mysql://host.docker.internal:3306/college_erp
 | Restart app | `docker compose restart app` |
 | Stop everything | `docker compose down` |
 | Rebuild after code change | `docker compose up -d --build` |
-| Check container status | `docker compose ps` |
+| Check container status | `docker compose ps` | 
+| Check your domain routing | `nslookup [yourdomain.com]` |
+| Check if your domain is working with nginx | `curl -I [http/https://localhost or yourdomain.com]` |
+| Shows which ports are open | `ufw status` |
