@@ -100,7 +100,7 @@ if [ "$ENABLE_SSL" = "true" ]; then
 
   # Now start nginx with the cert in place
   echo ">> Starting nginx..."
-  docker compose up -d nginx
+  docker compose up -d --build nginx
 
   # Set up auto-renewal cron job
   CRON_JOB="0 3 * * * certbot renew --quiet && docker compose -f $(pwd)/docker-compose.yml restart nginx"
