@@ -4,6 +4,7 @@
 - A VPS running Ubuntu 22.04 or 24.04
 - Docker installed ([install guide](https://docs.docker.com/engine/install/ubuntu/))
 - Ports 80 and 443 open in your firewall
+- If connecting to a domain, point your DNS A record '@' to the IP address, and the same with the a www record as well, and set the Tlk to 300 or 600
 
 ## Quick Deploy
 
