@@ -29,6 +29,7 @@ Fill in:
 
 ### 3. Run the deploy script
 ```bash
+chmod +x deploy.sh
 ./deploy.sh
 ```
 
